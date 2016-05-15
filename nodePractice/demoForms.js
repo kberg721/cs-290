@@ -15,15 +15,15 @@ app.get('/other-page',function(req,res){
   res.render('other-page');
 });
 
-app.get('/get-loopback', function(req, res) {
+app.get('/get-loopback',function(req,res){
   var qParams = [];
-  for (var p in req.query) {
-    qParams.push({'name':p, 'value':req.query[p]})
+  for (var p in req.query){
+    qParams.push({'name':p,'value':req.query[p]})
   }
   var context = {};
   context.dataList = qParams;
   res.render('get-loopback', context);
-}); 
+});
 
 function genNumber(){
   var toDisplay = {};
