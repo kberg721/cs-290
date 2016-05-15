@@ -31,11 +31,9 @@ app.post('/home', function(req,res){
   for (var p in req.body){
     qParams.push({'name':p,'value':req.body[p]})
   }
-  console.log(qParams);
-  console.log(req.body);
   var context = {};
   context.dataList = qParams;
-  res.render('home-get', context);
+  res.render('home-post', context);
 });
 
 app.use(function(req,res){
