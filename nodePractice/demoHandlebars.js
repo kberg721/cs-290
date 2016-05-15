@@ -15,9 +15,15 @@ app.get('/other-page',function(req,res){
   res.render('other-page');
 });
 
+function genNumber(){
+  var toDisplay = {};
+  toDisplay.number = Math.random();
+  return toDisplay;
+}
+
 app.get('/random-number',function(req,res){
   var randomNum = Math.random();
-  res.render('random-number');
+  res.render('random-number', genNumber());
 });
 
 app.use(function(req,res){
