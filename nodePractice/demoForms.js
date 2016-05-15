@@ -18,7 +18,7 @@ app.get('/other-page',function(req,res){
 app.get('/get-loopback', function(req, res) {
   var qParams = [];
   for (var p in req.query) {
-    qPArams.push({'name':p, 'value':req.query[p]})
+    qParams.push({'name':p, 'value':req.query[p]})
   }
   var context = {};
   context.dataList = qParams;
