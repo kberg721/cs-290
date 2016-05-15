@@ -27,12 +27,17 @@ app.get('/home',function(req,res){
 });
 
 app.post('/home', function(req,res){
-  var qParams = [];
+  var bParams = [];
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.body[p]})
+    bParams.push({'name':p,'value':req.body[p]})
+  }
+  var qParams = [];
+  for (var p in req.query){
+    qParams.push({'name':p,'value':req.query[p]})
   }
   var context = {};
-  context.dataList = qParams;
+  context.queryList = qParams;
+  context.bodyList = bParams;
   res.render('home-post', context);
 });
 
