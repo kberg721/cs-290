@@ -15,6 +15,11 @@ app.get('/other-page',function(req,res){
   res.render('other-page');
 });
 
+app.get('/random-number',function(req,res){
+  var randomNum = Math.random();
+  res.render('random-number');
+});
+
 app.use(function(req,res){
   res.status(404);
   res.render('404');
