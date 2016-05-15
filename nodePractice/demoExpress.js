@@ -17,7 +17,7 @@ app.get('/other-page',function(req,res){
 app.get('/random-number',function(req,res){
   res.type('text/plain');
   var randomNum = Math.random();
-  res.send('Welcome to the random number page! Here is your random number' + randomNum);
+  res.send('Welcome to the random number page! Here is your random number: ' + randomNum * 100);
 });
 
 app.use(function(req,res){
