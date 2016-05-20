@@ -52,7 +52,7 @@ app.post('/',function(req,res){
      request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=fa7d80c48643dfadde2cced1b1be6ca1', function(err, response, body){
       if(!err && response.statusCode < 400){
         data = JSON.parse(body);
-        console.log(data.main.temp);
+        console.log("hello " + data.main.temp);
       } else {
         if(response){
           console.log(response.statusCode);
