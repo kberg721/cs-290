@@ -1,0 +1,13 @@
+<h1>GET Request Received</h1>
+
+<table border="1" width=50%>
+	<caption>Keys and Values received via URL Query String</caption>
+	<th>Key</th>
+	<th>Value</th>
+	{{#each dataList}}
+	<tr>
+    	<td>{{this.name}} 
+    	<td>{{this.value}}
+  	</tr>
+  	{{/each}}
+</table>
