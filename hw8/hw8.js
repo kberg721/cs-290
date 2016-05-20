@@ -17,7 +17,7 @@ app.use(session({secret: 'MySecretPassword'}));
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 3001);
+app.set('port', 3000);
 
 /* Session count example */
 app.get('/count', function(req, res) {
