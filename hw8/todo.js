@@ -50,7 +50,7 @@ app.post('/',function(req,res){
         data = JSON.parse(body);
         console.log(data.main.temp);
         if(data.main.temp < req.body.minTemp) {
-          req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "tooCold":"true", "id":req.session.curId});
+          req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "tooCold":data.main.temp, "id":req.session.curId});
         } else {
           req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "id":req.session.curId});
         }
