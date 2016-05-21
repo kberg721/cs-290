@@ -51,6 +51,27 @@ app.post('/',function(req,res){
   if(req.body['Add Item']){
      request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=fa7d80c48643dfadde2cced1b1be6ca1', function(err, response, body){
       if(!err && response.statusCode < 400){
+        context.omw = body;
+        request({
+          "url":"http://httpbin.org/post",
+          "method":"POST",
+          "headers":{
+            "Content-Type":"application.json"
+          },
+          "body":'{"foo":"bar", "number":1}'
+
+        }, function(err, response, body) {
+          if(!err && response.statusCode < 400) {
+            context.httpbin = body;
+            console.log(context.httpbin);
+          } else {
+            console.log(err);
+            if(response){
+              console.log(response.statusCode);
+            }
+            next(err);
+          }
+        });
         
         data = JSON.parse(body);
         if(data.main.temp < req.body.minTemp) {
