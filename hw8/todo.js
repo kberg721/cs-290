@@ -44,15 +44,17 @@ app.post('/',function(req,res){
   }
 
   if(req.body['Add Item']){
-    req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "id":req.session.curId});
-    req.session.curId++;
-
-    console.log(req.body.city);
-
      request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=fa7d80c48643dfadde2cced1b1be6ca1', function(err, response, body){
       if(!err && response.statusCode < 400){
+        console.log(req.body.city);
         data = JSON.parse(body);
-        console.log("hello " + data.main.temp);
+        console.log(data.main.temp);
+        if(data.main.temp < req.body.minTemp) {
+          req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "tooCold":"true", "id":req.session.curId});
+        } else {
+          req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "id":req.session.curId});
+        }
+         req.session.curId++;
       } else {
         if(response){
           console.log(response.statusCode);
