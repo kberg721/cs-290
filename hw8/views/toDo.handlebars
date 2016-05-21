@@ -16,6 +16,8 @@
     <h3>{{this.name}}</h3>
     <h3>{{this.city}}</h3>
     <h3>{{this.minTemp}}</h3>
+    {{#if this.tooCold}}
+    <h3>It's currently {{this.tooCold}} degrees out, too cold! </h3>
     <form method="post">
       <input type="hidden" name="id" value="{{this.id}}">
       <input type="submit" name="Done" value="Mark as Done">
@@ -24,3 +26,5 @@
   {{/each}}
 </ul>
 {{/if}}
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
