@@ -35,6 +35,11 @@ app.post('/',function(req,res){
     req.session.name = req.body.name;
     req.session.toDo = [];
     req.session.curId = 0;
+    context.name = req.session.name;
+    context.toDoCount = req.session.toDo.length;
+    context.toDo = req.session.toDo;
+    console.log(context.toDo);
+    res.render('toDo',context);
   }
 
   //If there is no session, go to the main page.
@@ -46,15 +51,21 @@ app.post('/',function(req,res){
   if(req.body['Add Item']){
      request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=fa7d80c48643dfadde2cced1b1be6ca1', function(err, response, body){
       if(!err && response.statusCode < 400){
-        console.log(req.body.city);
+        
         data = JSON.parse(body);
-        console.log(data.main.temp);
         if(data.main.temp < req.body.minTemp) {
           req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "tooCold":data.main.temp, "id":req.session.curId});
         } else {
           req.session.toDo.push({"name":req.body.name, "city":req.body.city, "minTemp":req.body.minTemp, "id":req.session.curId});
         }
-         req.session.curId++;
+        req.session.curId++;
+        console.log(req.body.city);
+        console.log(data.main.temp);
+        context.name = req.session.name;
+        context.toDoCount = req.session.toDo.length;
+        context.toDo = req.session.toDo;
+        console.log(context.toDo);
+        res.render('toDo',context);
       } else {
         if(response){
           console.log(response.statusCode);
@@ -68,13 +79,13 @@ app.post('/',function(req,res){
     req.session.toDo = req.session.toDo.filter(function(e){
       return e.id != req.body.id;
     })
+    context.name = req.session.name;
+    context.toDoCount = req.session.toDo.length;
+    context.toDo = req.session.toDo;
+    console.log(context.toDo);
+    res.render('toDo',context);
   }
 
-  context.name = req.session.name;
-  context.toDoCount = req.session.toDo.length;
-  context.toDo = req.session.toDo;
-  console.log(context.toDo);
-  res.render('toDo',context);
 });
 
 app.use(function(req,res){
