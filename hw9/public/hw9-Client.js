@@ -15,6 +15,7 @@ function bindButtons() {
 	      console.log("Error in network request: " + request.statusText);
 	    }
 	});
+	console.log(JSON.stringify(payload));
 	req.send(JSON.stringify(payload));
     event.preventDefault();
 	});
