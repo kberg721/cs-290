@@ -1,4 +1,5 @@
 var express = require('express');
+var request = require('request');
 var mysql = require('./dbcon.js');
 
 var app = express();
@@ -24,7 +25,7 @@ app.get('/',function(req,res,next){
 });
 
 app.post('/', function(req, res) {
-  console.log(req.body.name);
+  console.log(req);
   res.status(200);
 });
 
