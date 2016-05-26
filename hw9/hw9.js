@@ -31,7 +31,8 @@ app.post('/', function(req, res, next) {
   var weight = req.body.weight;
   var date = req.body.date;
   var unit = 1;
-  var toInsert = "(" + name + ", " + reps + ", " + weight + ", " + date + ", " + unit +")";
+  var toInsert = name + ", " + reps + ", " + weight + ", " + date + ", " + unit;
+  console.log(toInsert);
   mysql.pool.query("INSERT INTO todo (name, reps, weight, date, lbs) VALUES (?)", toInsert, function(err, rows, fields){
     if(err){
       next(err); 
