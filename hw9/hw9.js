@@ -24,7 +24,7 @@ app.get('/',function(req,res,next){
 });
 
 app.post('/', function(req, res) {
-  console.log(req.body);
+  console.log(req);
   res.status(200);
 });
 
