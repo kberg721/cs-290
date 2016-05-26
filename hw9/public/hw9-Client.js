@@ -20,7 +20,7 @@ function bindButtons() {
 		      var response = JSON.parse(req.responseText);
 		      console.log(response);
 		    } else {
-		      console.log("Error in network request: " + request.statusText);
+		      console.log("Error in network request: " + req.statusText);
 		    }
 		});
 		console.log(JSON.stringify(payload));
