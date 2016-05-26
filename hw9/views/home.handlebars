@@ -1,21 +1,24 @@
 <h1>Your Workouts: </h1>
 <form id="newWorkout">
-  <input type="hidden" name="id" value="{{this.id}}">
+	<fieldset>
+		<legend>Add a Workout</legend>
+		<input type="hidden" name="id" value="{{this.id}}">
 
-  <label for="workoutName">Name: </label>
-  <input type="text" name="name" id="workoutName">
+		<label for="workoutName">Name: </label>
+		<input type="text" name="name" id="workoutName">
 
-  <label for="workoutReps">Reps: </label> 
-  <input type="number" name="workoutReps" id="workoutReps"> <br>
+		<label for="workoutReps">Reps: </label> 
+		<input type="number" name="workoutReps" id="workoutReps"> <br>
 
-  <label for="workoutWeight">Weight: </label>
-  <input type="number" name="workoutWeight" id="workoutWeight">
+		<label for="workoutWeight">Weight: </label>
+		<input type="number" name="workoutWeight" id="workoutWeight">
 
-  <label for="workoutDate">Date: </label>
-  <input type="date" name="workoutDate" id="workoutDate"> <br>
+		<label for="workoutDate">Date: </label>
+		<input type="date" name="workoutDate" id="workoutDate"> <br>
 
-  <input id="lbsCheck" type="checkbox" name="workoutLbs" value="lbs">Lbs? <br>
-  <input id="newWorkoutBtn" type="submit" name="Add Workout" value="Add Workout">
+		<input id="lbsCheck" type="checkbox" name="workoutLbs" value="lbs">Lbs? <br>
+		<input id="newWorkoutBtn" type="submit" name="Add Workout" value="Add Workout">
+	</fieldset>
 </form>
 
 <div>
