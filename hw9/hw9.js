@@ -49,6 +49,7 @@ app.post('/', function(req, res, next) {
       return;
     }
     res.status(200).send(JSON.stringify(rows));
+  })
 });
 
 app.get('/reset-table',function(req,res,next){
