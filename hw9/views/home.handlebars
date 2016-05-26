@@ -17,4 +17,17 @@
   <input id="lbsCheck" type="checkbox" name="workoutLbs" value="lbs">Lbs? <br>
   <input id="newWorkoutBtn" type="submit" name="Add Workout" value="Add Workout">
 </form>
-<p>{{results}}</p>
+
+<div>
+	<table id="workoutTable">
+		<thead>
+			<td>Exercise Name</td>
+			<td>Number of Reps</td>
+			<td>Weight</td>
+			<td>Date</td>
+			<td>Lbs (or Kgs if 0)</td>
+		<thead>
+		<tbody id="tableBody">
+		</tbody>
+	</table>
+</div>
