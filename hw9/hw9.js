@@ -21,10 +21,8 @@ app.get('/',function(req,res,next){
   });
 });
 
-app.post('/', function(req, res, next) {
-  if(req.body['Add Workout']){
-    console.log("heyyyy punk");
-  }
+app.post('/', function(req, res) {
+  console.log(req.body);
   res.status(200).send(null);
 });
 
