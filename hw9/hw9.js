@@ -25,7 +25,7 @@ app.get('/',function(req,res,next){
   });
 });
 
-app.post('/', function(req, res) {
+app.post('/', function(req, res, next) {
   var name = req.body.name;
   var reps = req.body.reps;
   var weight = req.body.weight;
