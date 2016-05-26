@@ -42,6 +42,13 @@ app.post('/', function(req, res, next) {
       return;
     }
   })
+
+  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    res.status(200).send(JSON.stringify(rows);
 });
 
 app.get('/reset-table',function(req,res,next){
