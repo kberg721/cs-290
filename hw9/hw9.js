@@ -29,10 +29,15 @@ app.post('/', function(req, res, next) {
   var reps = req.body.reps;
   var weight = req.body.weight;
   var date = req.body.date;
-  var unit = 1;
+  var unit = "";
+  if(req.body.unit == "lbs") {
+      unit = 1;
+  } else {
+      unit = 0;
+  }
   var toInsert = name + ", " + reps + ", " + weight + ", " + date + ", " + unit;
   console.log(toInsert);
-  mysql.pool.query("INSERT INTO workouts (`name`, `reps`) VALUES (?, ?)", [name, reps], function(err, rows, fields){
+  mysql.pool.query("INSERT INTO workouts (`name`, `reps`) VALUES (?, ?, ?, ?, ?)", [name, reps, weight, date, unit], function(err, rows, fields){
     if(err){
       next(err); 
       return;
