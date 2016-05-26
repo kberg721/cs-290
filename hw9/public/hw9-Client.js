@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', bindButtons);
 
 function bindButtons() {
-	document.getElementById('newWorkOutButton').addEventListener('click', function(event){
+	document.getElementById('newWorkout').addEventListener('submit', function(event){
     var req = new XMLHttpRequest();
 
     console.log("hello");
