@@ -13,7 +13,7 @@ function bindButtons() {
 	    } else {
 	    	payload.unit = "kgs";
 	    }
-	    req.open('POST', 'http://httpbin.org/post', true);
+	    req.open('POST', 'http://52.37.58.94:3000/', true);
 	    req.setRequestHeader('Content-Type', 'application/json');
 	    req.addEventListener('load',function(){
 		    if(req.status >= 200 && req.status < 400){
