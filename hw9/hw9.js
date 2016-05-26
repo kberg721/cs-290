@@ -35,12 +35,12 @@ app.post('/', function(req, res, next) {
   } else {
       unit = 0;
   }
-  mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", [name, reps, weight, date, unit], function(err, rows, fields){
+  mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
+    [name, reps, weight, date, unit], function(err, rows, fields){
     if(err){
       next(err); 
       return;
     }
-    res.send(JSON.stringify(rows));
   })
 });
 
