@@ -4,6 +4,9 @@ var mysql = require('./dbcon.js');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
+document.addEventListener('DOMContentLoaded', bindButtons);
+
+app.use(express.static('public'));
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
@@ -18,6 +21,13 @@ app.get('/',function(req,res,next){
     context.results = JSON.stringify(rows);
     res.render('home', context);
   });
+});
+
+app.post('/', function(req, res, next) {
+  if(req.body['Add Workout']){
+    console.log("heyyyy punk");
+  }
+  res.status(200).send(null);
 });
 
 app.get('/reset-table',function(req,res,next){
