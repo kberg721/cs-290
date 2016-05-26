@@ -1,5 +1,4 @@
 var express = require('express');
-var request = require('request');
 var mysql = require('./dbcon.js');
 
 var app = express();
@@ -33,7 +32,7 @@ app.post('/', function(req, res, next) {
   var unit = 1;
   var toInsert = name + ", " + reps + ", " + weight + ", " + date + ", " + unit;
   console.log(toInsert);
-  mysql.pool.query("INSERT INTO workouts (`name`, `reps`) VALUES (?)", [name], [reps], function(err, rows, fields){
+  mysql.pool.query("INSERT INTO workouts (`name`, `reps`) VALUES (?)", [name, reps], function(err, rows, fields){
     if(err){
       next(err); 
       return;
