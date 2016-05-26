@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', bindButtons);
 function bindButtons() {
 	document.getElementById('newWorkout').addEventListener('submit', function(event){
     var req = new XMLHttpRequest();
-
-    console.log("hello");
+    var payload = document.getElementById.("workoutName").value;
     req.open('POST', 'http://52.37.58.94:3000/', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
@@ -15,7 +14,7 @@ function bindButtons() {
 	      console.log("Error in network request: " + request.statusText);
 	    }
 	});
-    req.send(null);
+    req.send(JSON.stringify(payload));
     event.preventDefault();
 	});
 }
