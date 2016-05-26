@@ -18,13 +18,50 @@ function bindButtons() {
 	    req.addEventListener('load',function(){
 		    if(req.status >= 200 && req.status < 400){
 		      var response = JSON.parse(req.responseText);
-		      console.log(response);
+		      populateTable(response);
 		    } else {
 		      console.log("Error in network request: " + req.statusText);
 		    }
 		});
-		console.log(JSON.stringify(payload));
 		req.send(JSON.stringify(payload));
 	    event.preventDefault();
 	});
 }
+
+function populateTable(resp) {
+	var body = document.getElementById("tableBody");
+	body.innerHTML = "";
+	for(var i = 0; i < resp.length; i++) {
+		var row = document.createElement("tr");
+
+		var name = document.createElement("td");
+		name.innerHTML = resp[i].name;
+		row.appendChild(name);
+
+		var reps = document.createElement("td");
+		reps.innerHTML = resp[i].reps;
+		row.appendChild(reps);
+
+		var weight = document.createElement("td");
+		weight.innerHTML = resp[i].weight;
+		row.appendChild(weight);
+
+		var date = document.createElement("td");
+		date.innerHTML = resp[i].date;
+		row.appendChild(date);
+
+		var lbs = document.createElement("td");
+		lbs.innerHTML = resp[i].lbs;
+		row.appendChild(lbs);
+
+		body.appendChild(row);
+	}
+}
+
+
+
+
+
+
+
+
