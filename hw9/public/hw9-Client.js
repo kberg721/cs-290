@@ -47,11 +47,21 @@ function populateTable(resp) {
 		row.appendChild(weight);
 
 		var date = document.createElement("td");
-		date.innerHTML = resp[i].date;
+		var rawString = resp[i].date;
+		var refinedDate = "";
+		refinedDate += rawString.substring(0, 4);
+		refinedDate = rawString.substring(8, 10) + "-" + refinedDate;
+		refinedDate = rawString.substring(5, 7) + "-" + refinedDate;
+		date.innerHTML = refinedDate;
 		row.appendChild(date);
 
 		var lbs = document.createElement("td");
-		lbs.innerHTML = resp[i].lbs;
+		var unit = resp[i].lbs;
+		if(unit == 1) {
+			lbs.innerHTML = "lbs";
+		} else {
+			lbs.innerHTML = "kgs";
+		}
 		row.appendChild(lbs);
 
 		body.appendChild(row);
