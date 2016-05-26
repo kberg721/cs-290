@@ -1,9 +1,9 @@
 var express = require('express');
 var mysql = require('./dbcon.js');
-var bodyParser = require('body-parser');
 
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+var bodyParser = require('body-parser');
 
 app.use(express.static('public'));
 app.engine('handlebars', handlebars.engine);
