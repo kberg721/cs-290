@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', bindButtons);
 function bindButtons() {
 	document.getElementById('newWorkout').addEventListener('submit', function(event){
     var req = new XMLHttpRequest();
-    var payload2 = document.getElementById('workoutName').value;
+    var payload = document.getElementById('workoutName').value;
     req.open('POST', 'http://52.37.58.94:3000/', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
