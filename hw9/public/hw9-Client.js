@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', bindButtons);
 
 function bindButtons() {
-	document.getElementById('newWorkout').addEventListener('click', function(event){
+	document.getElementById('newWorkoutBtn').addEventListener('click', function(event){
 	    var req = new XMLHttpRequest();
 	    var payload = {};
 	    payload.name = document.getElementById('workoutName').value;
