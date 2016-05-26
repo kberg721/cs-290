@@ -24,7 +24,7 @@ app.get('/',function(req,res,next){
 
 app.post('/', function(req, res) {
   console.log(req.body);
-  res.status(200).send(null);
+  res.status(200);
 });
 
 app.get('/reset-table',function(req,res,next){
