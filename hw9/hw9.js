@@ -33,7 +33,7 @@ app.post('/', function(req, res, next) {
   var unit = 1;
   var toInsert = name + ", " + reps + ", " + weight + ", " + date + ", " + unit;
   console.log(toInsert);
-  mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?)", toInsert, function(err, rows, fields){
+  mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?)", [name, reps, weight, date, unit, function(err, rows, fields){
     if(err){
       next(err); 
       return;
