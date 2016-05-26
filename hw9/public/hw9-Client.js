@@ -4,7 +4,7 @@ function bindButtons() {
 	document.getElementById('newWorkout').addEventListener('submit', function(event){
     var req = new XMLHttpRequest();
     var payload = document.getElementById('workoutName').value;
-    console.log(JSON.stringify(payload);
+    console.log(JSON.stringify(payload));
     req.open('POST', 'http://52.37.58.94:3000/', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
