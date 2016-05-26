@@ -5,7 +5,7 @@ function bindButtons() {
     var req = new XMLHttpRequest();
 
     console.log("hello");
-    req.open('POST', 'http://localhost:3000', true);
+    req.open('POST', 'http://52.37.58.94:3000/', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
 	    if(req.status >= 200 && req.status < 400){
