@@ -7,6 +7,7 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -26,7 +27,7 @@ app.get('/',function(req,res,next){
 
 app.post('/', function(req, res) {
   console.log(req);
-  res.status(200);
+  res.send(200, req.body);
 });
 
 app.get('/reset-table',function(req,res,next){
