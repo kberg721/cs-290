@@ -5,7 +5,6 @@ function bindButtons() {
     var req = new XMLHttpRequest();
     var payload = {};
     payload.name = document.getElementById('workoutName').value;
-    console.log(JSON.stringify(payload));
     req.open('POST', 'http://52.37.58.94:3000/', true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.addEventListener('load',function(){
@@ -16,7 +15,7 @@ function bindButtons() {
 	      console.log("Error in network request: " + request.statusText);
 	    }
 	});
-    req.send(JSON.stringify(payload));
+	req.send(JSON.stringify(payload));
     event.preventDefault();
 	});
 }
