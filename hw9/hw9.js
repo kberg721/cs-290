@@ -26,8 +26,19 @@ app.get('/',function(req,res,next){
 });
 
 app.post('/', function(req, res) {
-  console.log(req);
-  res.send(200, req.body);
+  var name = req.body.name;
+  var reps = req.body.reps;
+  var weight = req.body.weight;
+  var date = req.body.date;
+  var unit = 1;
+  var toInsert = "(" + name + ", " + reps + ", " + weight + ", " + date + ", " + unit +")";
+  mysql.pool.query("INSERT INTO todo (name, reps, weight, date, lbs) VALUES (?)", toInsert, function(err, rows, fields){
+    if(err){
+      next(err); 
+      return;
+    }
+    res.send(JSON.stringify(rows));
+  })
 });
 
 app.get('/reset-table',function(req,res,next){
