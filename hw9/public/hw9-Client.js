@@ -5,6 +5,14 @@ function bindButtons() {
 	    var req = new XMLHttpRequest();
 	    var payload = {};
 	    payload.name = document.getElementById('workoutName').value;
+	    payload.reps = document.getElementById('workoutReps').value;
+	    payload.weight = document.getElementById('workoutWeight').value;
+	    payload.date = document.getElementById('workoutDate').value;
+	    if(document.getElementById('lbsCheck').checked) {
+	    	payload.unit = "lbs";
+	    } else {
+	    	payload.unit = "kgs";
+	    }
 	    req.open('POST', 'http://httpbin.org/post', true);
 	    req.setRequestHeader('Content-Type', 'application/json');
 	    req.addEventListener('load',function(){
