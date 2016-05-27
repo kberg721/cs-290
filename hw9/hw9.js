@@ -52,6 +52,10 @@ app.post('/', function(req, res, next) {
       res.status(200).send(JSON.stringify(rows));
     });
   }
+
+  if(req.body.btn == "Delete") {
+    console.log("I DID IT");
+  }
   
   
 });
