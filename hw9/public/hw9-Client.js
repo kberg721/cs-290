@@ -38,7 +38,7 @@ function setUpPage() {
 				var req = new XMLHttpRequest();
 			    var payload = {};
 			    payload.btn = "Delete";
-			    payload.id = listItem.id.value + 1;
+			    payload.id = listItem.id.value;
 			    req.open('POST', 'http://52.37.58.94:3000/', true);
 			    req.setRequestHeader('Content-Type', 'application/json');
 			    req.addEventListener('load',function(){
