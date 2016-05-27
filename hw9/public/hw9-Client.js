@@ -29,7 +29,7 @@ function setUpPage() {
 	    event.preventDefault();
 	});
 
-	var deleteBtns = document.getElementByClassName("deleteBtn");
+	var deleteBtns = document.getElementsByClassName("deleteBtn");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		deleteBtns[i].addEventListener('click', function(event){
 			return function(event) {
