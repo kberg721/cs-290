@@ -38,6 +38,12 @@
 				<td>{{this.weight}}</td>
 				<td>{{this.date}}</td>
 				<td>{{this.lbs}}</td>
+				<td>
+					<form>
+      					<input type="hidden" name="id" value="{{this.id}}">
+      					<input type="submit" name="delete" value="delete">
+    				</form>
+    			</td>
 			</tr>
 		{{/each}}
 		</tbody>
