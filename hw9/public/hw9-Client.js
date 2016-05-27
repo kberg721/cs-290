@@ -32,7 +32,6 @@ function setUpPage() {
 	var deleteBtns = document.getElementsByClassName("deleteForm");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
-		console.log(listItem.id.value);
 		listItem.onsubmit = (function(value) {
 			return function() {
 				var req = new XMLHttpRequest();
@@ -78,11 +77,7 @@ function populateTable(resp) {
 
 		var date = document.createElement("td");
 		var rawString = resp[i].date;
-		var refinedDate = "";
-		refinedDate += rawString.substring(0, 4);
-		refinedDate = rawString.substring(8, 10) + "-" + refinedDate;
-		refinedDate = rawString.substring(5, 7) + "-" + refinedDate;
-		date.innerHTML = refinedDate;
+		date.innerHTML = rawString;
 		row.appendChild(date);
 
 		var lbs = document.createElement("td");
