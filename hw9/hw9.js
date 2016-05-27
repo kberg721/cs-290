@@ -20,13 +20,12 @@ app.get('/',function(req,res,next){
       return;
     }
     context.results = rows;
-    console.log(context.results);
     res.render('home', context);
   });
 });
 
 app.post('/', function(req, res, next) {
-  if(req.body['Add Workout']) {
+  if(req.body.btn == "Add") {
     var name = req.body.name;
     var reps = req.body.reps;
     var weight = req.body.weight;
@@ -53,6 +52,7 @@ app.post('/', function(req, res, next) {
       res.status(200).send(JSON.stringify(rows));
     });
   }
+  
   
 });
 
