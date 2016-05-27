@@ -26,31 +26,33 @@ app.get('/',function(req,res,next){
 });
 
 app.post('/', function(req, res, next) {
-  var name = req.body.name;
-  var reps = req.body.reps;
-  var weight = req.body.weight;
-  var date = req.body.date;
-  var unit = "";
-  if(req.body.unit == "lbs") {
-      unit = 1;
-  } else {
-      unit = 0;
-  }
-  mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
-    [name, reps, weight, date, unit], function(err, rows, fields){
-    if(err){
-      next(err); 
-      return;
+  if(req.body['Add Workout']) {
+    var name = req.body.name;
+    var reps = req.body.reps;
+    var weight = req.body.weight;
+    var date = req.body.date;
+    var unit = "";
+    if(req.body.unit == "lbs") {
+        unit = 1;
+    } else {
+        unit = 0;
     }
-  });
+    mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
+      [name, reps, weight, date, unit], function(err, rows, fields){
+      if(err){
+        next(err); 
+        return;
+      }
+    });
 
-  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-    if(err){
-      next(err);
-      return;
-    }
-    res.status(200).send(JSON.stringify(rows));
-  });
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      res.status(200).send(JSON.stringify(rows));
+    });
+  }
   
 });
 
