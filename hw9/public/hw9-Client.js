@@ -43,7 +43,7 @@ function setUpPage() {
 			    req.addEventListener('load',function(){
 				    if(req.status >= 200 && req.status < 400){
 				      var response = JSON.parse(req.responseText);
-				      console.log("WHAT IS HAPPENING");
+				      console.log(response);
 				      populateTable(response);
 				    } else {
 				      console.log("Error in network request: " + req.statusText);
