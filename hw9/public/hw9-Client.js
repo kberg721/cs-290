@@ -78,6 +78,7 @@ function populateTable(resp) {
 		delForm.appendChild(input1);
 		delForm.appendChild(input2);
 		del.appendChild(delForm);
+		row.appendChild(del);
 
 		body.appendChild(row);
 	}
