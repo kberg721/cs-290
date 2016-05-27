@@ -61,7 +61,14 @@ app.post('/', function(req, res, next) {
         next(err); 
         return;
       }
-       res.status(200).send(rows);
+    });
+
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      if(err){
+        next(err);
+      return;
+    }
+    res.status(200).send(rows);
     });
   }
   
