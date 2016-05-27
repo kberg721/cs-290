@@ -21,7 +21,6 @@ app.get('/',function(req,res,next){
     }
     context.results = JSON.stringify(rows);
     console.log(context.results);
-    res.status(200).send(JSON.stringify(rows));
     res.render('home', context);
   });
 });
