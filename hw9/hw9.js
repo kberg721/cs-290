@@ -43,8 +43,13 @@ app.post('/', function(req, res, next) {
     }
   });
 
-  var rows = getRows(next); 
-  res.status(200).send(JSON.stringify(rows));
+  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    res.status(200).send(JSON.stringify(rows));
+  });
   
 });
 
@@ -81,12 +86,9 @@ app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
 
-function getRows(next) {
-  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-    if(err){
-      next(err);
-      return;
-    }
-    return rows;
-  });
-}
+
+
+
+
+
+
