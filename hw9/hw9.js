@@ -41,7 +41,7 @@ app.post('/', function(req, res, next) {
       next(err); 
       return;
     }
-  })
+  });
 
   var rows = getRows(next); 
   res.status(200).send(JSON.stringify(rows));
@@ -88,4 +88,5 @@ function getRows(next) {
       return;
     }
     return rows;
+  });
 }
