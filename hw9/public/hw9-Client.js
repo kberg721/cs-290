@@ -1,22 +1,6 @@
 document.addEventListener('DOMContentLoaded', setUpPage);
 
 function setUpPage() {
-
-	var req = new XMLHttpRequest();
-	req.open('GET', 'http://52.37.58.94:3000/', true);
-
-	req.addEventListener('load',function(){
-		//if successful
-	    if(req.status >= 200 && req.status < 400){
-	      var response = JSON.parse(req.responseText);
-	      populateTable(response);
-	    } else {
-	      console.log("Error in network request: " + request.statusText);
-		}
-	});         
-    req.send(null);
-    event.preventDefault();
-
 	document.getElementById('newWorkoutBtn').addEventListener('click', function(event){
 	    var req = new XMLHttpRequest();
 	    var payload = {};
