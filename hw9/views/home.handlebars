@@ -4,7 +4,7 @@
 		<legend>Add a Workout</legend>
 		<input type="hidden" name="id" value="{{this.id}}">
 
-		<label for="workoutName">Name:  </label>
+		<label for="workoutName">Name: </label>
 		<input type="text" name="name" id="workoutName">
 
 		<label for="workoutReps">Reps: </label> 
@@ -31,6 +31,11 @@
 			<td>Unit of Weight</td>
 		<thead>
 		<tbody id="tableBody">
+		{{#each results}}
+			<tr>
+				<td>{{this.name}}</td>
+			</tr>
+		{{/each}}
 		</tbody>
 	</table>
 </div>
