@@ -30,7 +30,7 @@ function setUpPage() {
 	});
 
 	var deleteBtns = document.getElementsByClassName("deleteBtn");
-	console.log(delebteBtns);
+	console.log(deleteBtns);
 	for(var i = 0; i < deleteBtns.length; i++) {
 		deleteBtns[i].addEventListener('click', function(event){
 			return function(event) {
