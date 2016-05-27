@@ -29,10 +29,11 @@ function setUpPage() {
 	    event.preventDefault();
 	});
 
-	var deleteBtns = document.getElementsByClassName("deleteBtn");
+	var deleteBtns = document.getElementsByClassName("deleteForm");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
-		listItem.onclick = (function(value) {
+		console.log(listItem);
+		listItem.onsubmit = (function(value) {
 			return function() {
 				var req = new XMLHttpRequest();
 			    var payload = {};
