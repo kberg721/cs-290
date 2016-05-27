@@ -5,6 +5,7 @@ function setUpPage() {
 	document.getElementById('newWorkoutBtn').addEventListener('click', function(event){
 	    var req = new XMLHttpRequest();
 	    var payload = {};
+	    payload.btn = "Add";
 	    payload.name = document.getElementById('workoutName').value;
 	    payload.reps = document.getElementById('workoutReps').value;
 	    payload.weight = document.getElementById('workoutWeight').value;
