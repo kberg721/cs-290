@@ -80,6 +80,21 @@ function populateTable(resp) {
 		del.appendChild(delForm);
 		row.appendChild(del);
 
+		var edit = document.createElement("td");
+		var editForm = document.createElement("form");
+		var input1 = document.createElement("input");
+		input1.type = "hidden";
+		input1.name = "id";
+		input1.value = resp[i].id;
+		var input2 = document.createElement("input");
+		input2.type = "submit";
+		input2.name = "edit";
+		input2.value = "edit";
+		editForm.appendChild(input1);
+		editForm.appendChild(input2);
+		edit.appendChild(editForm);
+		row.appendChild(edit);
+
 		body.appendChild(row);
 	}
 }
