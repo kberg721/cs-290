@@ -54,7 +54,13 @@ app.post('/', function(req, res, next) {
   }
 
   if(req.body.btn == "Delete") {
-    console.log("I DID IT");
+     mysql.pool.query("DELETE FROM workouts WHERE id = ?", 
+      [req.body.id], function(err, rows, fields){
+      if(err){
+        next(err); 
+        return;
+      }
+    });
   }
   
   
