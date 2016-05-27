@@ -77,7 +77,7 @@ function populateTable(resp) {
 		input2.value = "delete";
 		delForm.appendChild(input1);
 		delForm.appendChild(input2);
-		del.appendChild(del);
+		del.appendChild(delForm);
 
 		body.appendChild(row);
 	}
