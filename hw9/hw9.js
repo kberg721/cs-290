@@ -43,13 +43,9 @@ app.post('/', function(req, res, next) {
     }
   })
 
-  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-    if(err){
-      next(err);
-      return;
-    }
-    res.status(200).send(JSON.stringify(rows));
-  })
+  var rows = getRows(next); 
+  res.status(200).send(JSON.stringify(rows));
+  
 });
 
 app.get('/reset-table',function(req,res,next){
@@ -84,3 +80,12 @@ app.use(function(err, req, res, next){
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
+
+function getRows(next) {
+  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    return rows;
+}
