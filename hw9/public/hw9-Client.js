@@ -32,27 +32,25 @@ function setUpPage() {
 	var deleteBtns = document.getElementsByClassName("deleteForm");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
-		listItem.onclick = (function(value) {
-			return function() {
-				var req = new XMLHttpRequest();
-			    var payload = {};
-			    payload.btn = "Delete";
-			    payload.id = listItem.id.value;
-			    req.open('POST', 'http://52.37.58.94:3000/', true);
-			    req.setRequestHeader('Content-Type', 'application/json');
-			    req.addEventListener('load',function(){
-				    if(req.status >= 200 && req.status < 400){
-				      var response = JSON.parse(req.responseText);
-				      console.log(response);
-				      populateTable(response);
-				    } else {
-				      console.log("Error in network request: " + req.statusText);
-				    }
-				});
-				req.send(JSON.stringify(payload));
-			    event.preventDefault();
-			}
-		})(i);
+		listItem.onclick = (function() {
+			var req = new XMLHttpRequest();
+		    var payload = {};
+		    payload.btn = "Delete";
+		    payload.id = listItem.id.value;
+		    req.open('POST', 'http://52.37.58.94:3000/', true);
+		    req.setRequestHeader('Content-Type', 'application/json');
+		    req.addEventListener('load',function(){
+			    if(req.status >= 200 && req.status < 400){
+			      var response = JSON.parse(req.responseText);
+			      console.log(response);
+			      populateTable(response);
+			    } else {
+			      console.log("Error in network request: " + req.statusText);
+			    }
+			});
+			req.send(JSON.stringify(payload));
+		    event.preventDefault();
+		});
 	}
 	
 }
