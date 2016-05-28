@@ -29,14 +29,14 @@ function setUpPage() {
 	    event.preventDefault();
 	});
 
-	var deleteBtns = document.getElementsByClassName("deleteForm");
+	var deleteBtns = document.getElementsByClassName("deleteBtn");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
-		listItem.onsubmit = (function() {
+		listItem.onclick = (function() {
 			var req = new XMLHttpRequest();
 		    var payload = {};
 		    payload.btn = "Delete";
-		    payload.id = listItem.id.value;
+		    payload.id = listItem.parentElement.id.value;
 		    req.open('POST', 'http://52.37.58.94:3000/', true);
 		    req.setRequestHeader('Content-Type', 'application/json');
 		    req.addEventListener('load',function(){
