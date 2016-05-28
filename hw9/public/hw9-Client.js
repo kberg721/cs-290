@@ -89,12 +89,12 @@ function populateTable(resp) {
 
 		var del = document.createElement("td");
 		var delForm = document.createElement("form");
-		delForm.className = "deleteForm";
 		var input1 = document.createElement("input");
 		input1.type = "hidden";
 		input1.name = "id";
 		input1.value = resp[i].id;
 		var input2 = document.createElement("input");
+		input2.className = "deleteBtn";
 		input2.type = "submit";
 		input2.name = "delete";
 		input2.value = "delete";
