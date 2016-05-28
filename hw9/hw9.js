@@ -42,15 +42,15 @@ app.post('/', function(req, res, next) {
         next(err); 
         return;
       }
-    });
-
-    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
       if(err){
         next(err);
         return;
       }
       res.status(200).send(JSON.stringify(rows));
+      });
     });
+
   }
 
   if(req.body.btn == "Delete") {
