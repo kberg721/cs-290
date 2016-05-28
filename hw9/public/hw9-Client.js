@@ -32,7 +32,7 @@ function setUpPage() {
 	var deleteBtns = document.getElementsByClassName("deleteForm");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
-		listItem.onsubmit = (function(value) {
+		listItem.onclick = (function(value) {
 			return function() {
 				var req = new XMLHttpRequest();
 			    var payload = {};
