@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', setUpPage);
 function setUpPage() {
 	
 	attachDeleteFunction();
-	
+
 	document.getElementById('newWorkoutBtn').addEventListener('click', function(event){
 	    var req = new XMLHttpRequest();
 	    var payload = {};
@@ -50,6 +50,7 @@ function attachDeleteFunction() {
 			      var response = JSON.parse(req.responseText);
 			      console.log(response);
 			      populateTable(response);
+			      attachDeleteFunction();
 			    } else {
 			      console.log("Error in network request: " + req.statusText);
 			    }
