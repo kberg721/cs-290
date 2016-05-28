@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', setUpPage);
 
 function setUpPage() {
 	
+	attachDeleteFunction();
+	
 	document.getElementById('newWorkoutBtn').addEventListener('click', function(event){
 	    var req = new XMLHttpRequest();
 	    var payload = {};
@@ -21,6 +23,7 @@ function setUpPage() {
 		    if(req.status >= 200 && req.status < 400){
 		      var response = JSON.parse(req.responseText);
 		      populateTable(response);
+		      attachDeleteFunction();
 		    } else {
 		      console.log("Error in network request: " + req.statusText);
 		    }
@@ -28,7 +31,10 @@ function setUpPage() {
 		req.send(JSON.stringify(payload));
 	    event.preventDefault();
 	});
+	
+}
 
+function attachDeleteFunction() {
 	var deleteBtns = document.getElementsByClassName("deleteBtn");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
@@ -52,7 +58,6 @@ function setUpPage() {
 		    event.preventDefault();
 		});
 	}
-	
 }
 
 function populateTable(resp) {
