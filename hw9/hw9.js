@@ -43,36 +43,32 @@ app.post('/', function(req, res, next) {
         return;
       }
       mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-      res.status(200).send(JSON.stringify(rows));
+        if(err) {
+          next(err);
+          return;
+        }
+        res.status(200).send(JSON.stringify(rows));
       });
     });
-
   }
 
   if(req.body.btn == "Delete") {
     console.log(req.body.id);
-     mysql.pool.query("DELETE FROM workouts WHERE id = ?", 
-      [req.body.id], function(err, rows, fields){
-      if(err){
+    mysql.pool.query("DELETE FROM workouts WHERE id = ?", 
+      [req.body.id], function(err, rows, fields) {
+      if(err) {
         next(err); 
         return;
       }
-    });
-
-    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-      if(err){
-        next(err);
-      return;
-    }
-    res.status(200).send(JSON.stringify(rows));
+      mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
+        if(err) {
+          next(err);
+          return;
+        }
+        res.status(200).send(JSON.stringify(rows));
+      });
     });
   }
-  
-  
 });
 
 app.get('/reset-table',function(req,res,next){
