@@ -25,7 +25,7 @@ app.get('/',function(req,res,next){
       context.results = rows;
       console.log("this assignment");
       console.log(rows);
-      res.render('edit-data', context);
+      res.redirect('http://google.com', context);
     });
   } else {
     mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
