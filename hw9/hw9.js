@@ -35,14 +35,14 @@ app.get('/edit-data',function(req,res,next){
     var date = new Date(rows[0].date);
     var dateString = date.getFullYear() + "-" 
     if(date.getMonth() < 10) {
-      dateString += dateString + "0" + date.getMonth() + "-";
+      dateString += "0" + date.getMonth() + "-";
     } else {
-      dateString += dateString + date.getMonth() + "-";
+      dateString += date.getMonth() + "-";
     } 
     if(date.getDay() < 10) {
-      dateString += dateString + "0" + date.getDay();
+      dateString += "0" + date.getDay();
     } else {
-      dateString += dateString + date.getDay();
+      dateString += date.getDay();
     } 
     context.date = dateString;
     console.log(dateString);
