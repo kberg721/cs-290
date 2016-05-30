@@ -14,7 +14,7 @@ app.set('port', 3000);
 
 app.get('/',function(req,res,next){
   var context = {};
-  console.log(req.query);
+  console.log(req.query.id);
   if(req.query.id != null) {
     mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
       if(err){
