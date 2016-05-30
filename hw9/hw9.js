@@ -32,9 +32,10 @@ app.get('/edit-data',function(req,res,next){
       return;
     }
     context.results = rows;
-    console.log(rows[0].date);
     var date = new Date(rows[0].date);
-    console.log(date);
+    var dateString = date.getYear() + "-" + date.getMonth() + "-" + date.getDay();
+    context.date = dateString;
+    console.log(dateString);
     res.render('edit-data', context);
   });
 });
