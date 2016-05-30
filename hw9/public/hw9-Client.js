@@ -39,6 +39,7 @@ function setUpPage() {
 		    var req = new XMLHttpRequest();
 		    var payload = {};
 		    payload.btn = "Edit";
+		    payload.id = document.getElementById('workoutID').value;
 		    payload.name = document.getElementById('workoutName').value;
 		    payload.reps = document.getElementById('workoutReps').value;
 		    payload.weight = document.getElementById('workoutWeight').value;
