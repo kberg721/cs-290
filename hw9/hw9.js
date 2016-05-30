@@ -47,6 +47,7 @@ app.get('/edit-data',function(req,res,next){
     context.date = dateString;
 
     if(rows[0].lbs == 1) {
+      console.log(rows[0].lbs);
       context.checked = "true";
     }
     res.render('edit-data', context);
@@ -124,7 +125,7 @@ app.post('/', function(req, res, next) {
       return;
     }
     context.results = "Updated " + result.changedRows + " rows.";
-    res.redirect(200,"http://52.37.58.94:3000/");
+    res.redirect("http://52.37.58.94:3000/");
   });
   }
 
