@@ -33,9 +33,17 @@ app.get('/edit-data',function(req,res,next){
     }
     context.results = rows;
     console.log(rows[0].date);
+    var date = new Date(rows[0].date);
+    console.log(date);
     res.render('edit-data', context);
   });
 });
+
+function convertMonthNameToNumber(monthName) {
+    var myDate = new Date(monthName + " 1, 2000");
+    var monthDigit = myDate.getMonth();
+    return isNaN(monthDigit) ? 0 : (monthDigit + 1);
+}
 
 app.post('/', function(req, res, next) {
   if(req.body.btn == "Add") {
