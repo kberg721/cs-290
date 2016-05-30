@@ -71,7 +71,7 @@ app.post('/', function(req, res, next) {
 });
 
 app.post('/edit-data',function(req,res){
-  res.render('edit');
+  res.render('edit-data');
 });
 
 app.get('/reset-table',function(req,res,next){
