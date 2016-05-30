@@ -116,7 +116,7 @@ app.post('/', function(req, res, next) {
     } else {
         unit = 0;
     }
-    mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, unit=? WHERE id=? ",
+    mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=? ",
     [name, reps, weight, date, unit, req.body.id],
     function(err, result){
     if(err){
