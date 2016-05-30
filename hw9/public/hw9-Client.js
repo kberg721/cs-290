@@ -67,7 +67,7 @@ function attachFormFunctions() {
 				var req = new XMLHttpRequest();
 			    var payload = {};
 			    payload.id = item.parentElement.id.value;
-			    req.open('GET', 'http://52.37.58.94:3000/edit-data', true);
+			    req.open('POST', 'http://52.37.58.94:3000/edit-data', true);
 			    req.setRequestHeader('Content-Type', 'application/json');
 			    req.addEventListener('load',function(){
 				    if(req.status >= 200 && req.status < 400){
