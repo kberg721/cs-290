@@ -15,14 +15,25 @@ app.set('port', 3000);
 app.get('/',function(req,res,next){
   var context = {};
   console.log(req.query);
-  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-    if(err){
-      next(err);
-      return;
-    }
-    context.results = rows;
-    res.render('home', context);
-  });
+  if(req.query.id != NULL) {
+    mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      context.results = rows;
+      res.render('edit-data', context);
+    });
+  } else {
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      context.results = rows;
+      res.render('home', context);
+    });
+  }
 });
 
 app.post('/', function(req, res, next) {
