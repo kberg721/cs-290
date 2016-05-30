@@ -124,8 +124,7 @@ app.post('/', function(req, res, next) {
       return;
     }
     context.results = "Updated " + result.changedRows + " rows.";
-    console.log(context.results);
-    res.render('home',context);
+    res.redirect(200,"http://52.37.58.94:3000/");
   });
   }
 
