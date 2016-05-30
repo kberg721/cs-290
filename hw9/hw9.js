@@ -49,9 +49,7 @@ app.get('/edit-data',function(req,res,next){
     if(rows[0].lbs == 1) {
       console.log(rows[0].lbs);
       context.checked = "true";
-    } else {
-      context.checked = "false";
-    }
+    } 
     res.render('edit-data', context);
   });
 });
