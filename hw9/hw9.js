@@ -20,7 +20,6 @@ app.get('/',function(req,res,next){
       return;
     }
     context.results = rows;
-    console.log(context.results);
     res.render('home', context);
   });
 });
@@ -54,7 +53,6 @@ app.post('/', function(req, res, next) {
   }
 
   if(req.body.btn == "Delete") {
-    console.log(req.params);
     mysql.pool.query("DELETE FROM workouts WHERE id = ?", 
       [req.body.id], function(err, rows, fields) {
       if(err) {
@@ -70,6 +68,12 @@ app.post('/', function(req, res, next) {
       });
     });
   }
+});
+
+app.get('/edit-data',function(req,res,next){
+  var context = {};
+  console.log("hello from the server!");
+  res.render('edit-data', context);
 });
 
 app.get('/reset-table',function(req,res,next){
