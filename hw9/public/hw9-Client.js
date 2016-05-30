@@ -67,19 +67,8 @@ function attachFormFunctions() {
 				var req = new XMLHttpRequest();
 			    var payload = "?id=";
 			    payload += editItem.parentElement.id.value;
+			    console.log(payload);
 			    req.open('GET', 'http://52.37.58.94:3000/' + payload, true);
-			    //req.setRequestHeader('Content-Type', 'application/json');
-			    /*
-			    req.addEventListener('load',function(){
-				    if(req.status >= 200 && req.status < 400){
-				      //var response = JSON.parse(req.responseText);
-				      //populateTable(response);
-				      //attachFormFunctions();
-				    } else {
-				      console.log("Error in network request: " + req.statusText);
-				    }
-				});
-				*/
 				req.send(null);
 			    event.preventDefault();
 			};
