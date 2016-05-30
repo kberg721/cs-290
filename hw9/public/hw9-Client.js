@@ -65,7 +65,7 @@ function attachFormFunctions() {
 		editItem.onclick = (function(item) {
 			return function() {
 				var req = new XMLHttpRequest();
-			    var payload = "id=";
+			    var payload = "?id=";
 			    payload += editItem.parentElement.id.value;
 			    req.open('GET', 'http://52.37.58.94:3000/edit-data' + payload, true);
 			    //req.setRequestHeader('Content-Type', 'application/json');
