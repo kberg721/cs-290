@@ -73,7 +73,7 @@ app.post('/', function(req, res, next) {
 app.get('/edit-data',function(req,res,next){
   var context = {};
   console.log("hello from the server!");
-  res.render('edit-data', context);
+  res.render('edit', context);
 });
 
 app.get('/reset-table',function(req,res,next){
