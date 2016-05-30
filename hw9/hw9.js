@@ -45,7 +45,6 @@ app.get('/edit-data',function(req,res,next){
       dateString += date.getDay();
     } 
     context.date = dateString;
-    console.log(dateString);
 
     if(rows[0].lbs == 1) {
       context.checked = "true";
@@ -104,6 +103,12 @@ app.post('/', function(req, res, next) {
       });
     });
   }
+
+  if(req.body.btn == "Edit") {
+    console.log("MR MEEEEEESEEKS");
+  }
+
+
 });
 
 app.get('/reset-table',function(req,res,next){
