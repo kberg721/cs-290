@@ -14,42 +14,24 @@ app.set('port', 3000);
 
 app.get('/',function(req,res,next){
   var context = {};
-  if(req.query.id != null) {
-    console.log("fuck");
-    mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-      context.results = rows;
-      console.log("this assignment");
-      console.log(rows);
-      res.redirect(200, 'edit-data');
-    });
-  } else {
-    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-      context.results = rows;
-      res.render('home', context);
-    });
-  }
+  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.render('home', context);
+  }); 
 });
 
 app.get('/edit-data',function(req,res,next){
   var context = {};
-  console.log(req.query.id);
-  console.log("fuck");
   mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
     if(err){
       next(err);
       return;
     }
     context.results = rows;
-    console.log("this assignment");
-    console.log(rows);
     res.render('edit-data', context);
   });
 });
