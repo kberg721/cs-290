@@ -33,7 +33,17 @@ app.get('/edit-data',function(req,res,next){
     }
     context.results = rows;
     var date = new Date(rows[0].date);
-    var dateString = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+    var dateString = date.getFullYear() + "-" 
+    if(date.getMonth() < 10) {
+      dateString += dateString + "0" + date.getMonth() + "-";
+    } else {
+      dateString += dateString + date.getMonth() + "-";
+    } 
+    if(date.getDay() < 10) {
+      dateString += dateString + "0" + date.getDay();
+    } else {
+      dateString += dateString + date.getDay();
+    } 
     context.date = dateString;
     console.log(dateString);
     res.render('edit-data', context);
