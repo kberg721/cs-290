@@ -23,6 +23,8 @@ app.get('/',function(req,res,next){
         return;
       }
       context.results = rows;
+      console.log("this assignment");
+      console.log(rows);
       res.render('edit-data', context);
     });
   } else {
