@@ -61,22 +61,6 @@ function attachFormFunctions() {
 			};
 		})(listItem);
 	}
-	/*
-	for(var j = 0; j < editBtns.length; j++) {
-		var editItem = editBtns[j];
-		editItem.onclick = (function(item) {
-			return function() {
-				var req = new XMLHttpRequest();
-			    var payload = "?id=";
-			    payload += item.parentElement.id.value;
-			    console.log(payload);
-			    req.open('GET', 'http://52.37.58.94:3000/' + payload, true);
-				req.send(null);
-			    event.preventDefault();
-			};
-		})(editItem);
-	}
-	*/
 }
 
 function populateTable(resp) {
@@ -133,13 +117,16 @@ function populateTable(resp) {
 		input1.type = "hidden";
 		input1.name = "id";
 		input1.value = resp[i].id;
+		var link = document.createElement("a");
+		link.href = "http://52.37.58.94:3000/edit-data?id=" + resp[i].id;
 		var input2 = document.createElement("input");
 		input2.className = "editBtn";
 		input2.type = "submit";
 		input2.name = "edit";
 		input2.value = "edit";
+		link.appendChild(input2);
 		editForm.appendChild(input1);
-		editForm.appendChild(input2);
+		editForm.appendChild(link);
 		edit.appendChild(editForm);
 		row.appendChild(edit);
 
