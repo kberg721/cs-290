@@ -121,7 +121,7 @@ function populateTable(resp) {
 		link.href = "http://52.37.58.94:3000/edit-data?id=" + resp[i].id;
 		var input2 = document.createElement("input");
 		input2.className = "editBtn";
-		input2.type = "submit";
+		input2.type = "button";
 		input2.name = "edit";
 		input2.value = "edit";
 		link.appendChild(input2);
