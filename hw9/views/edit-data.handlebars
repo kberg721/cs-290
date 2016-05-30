@@ -1,23 +1,25 @@
 <h1>Edit a Workout</h1>
-<form id="newWorkout">
-	<fieldset style="margin-bottom: 15px">
-		<input type="hidden" name="id" value="{{this.id}}">
+{{#each this.results}}
+	<form id="newWorkout">
+		<fieldset style="margin-bottom: 15px">
+			<input type="hidden" name="id" value="{{this.id}}">
 
-		<label for="workoutName">Name: </label>
-		<input value="{{this.results.name}}" type="text" name="name" id="workoutName">
+			<label for="workoutName">Name: </label>
+			<input value="{{this.name}}" type="text" name="name" id="workoutName">
 
-		<label for="workoutReps">Reps: </label> 
-		<input type="number" name="workoutReps" id="workoutReps"> <br>
+			<label for="workoutReps">Reps: </label> 
+			<input type="number" name="workoutReps" id="workoutReps"> <br>
 
-		<label for="workoutWeight">Weight: </label>
-		<input type="number" name="workoutWeight" id="workoutWeight">
+			<label for="workoutWeight">Weight: </label>
+			<input type="number" name="workoutWeight" id="workoutWeight">
 
-		<label for="workoutDate">Date: </label>
-		<input maxlength="8" type="date" name="workoutDate" id="workoutDate"> <br>
+			<label for="workoutDate">Date: </label>
+			<input maxlength="8" type="date" name="workoutDate" id="workoutDate"> <br>
 
-		<input id="lbsCheck" type="checkbox" name="workoutLbs" value="lbs">Lbs? <br>
-		<input id="newWorkoutBtn" type="submit" name="Add Workout" value="Add Workout">
-	</fieldset>
-</form>
+			<input id="lbsCheck" type="checkbox" name="workoutLbs" value="lbs">Lbs? <br>
+			<input id="newWorkoutBtn" type="submit" name="Add Workout" value="Add Workout">
+		</fieldset>
+	</form>
+{{/each}}
 
 
