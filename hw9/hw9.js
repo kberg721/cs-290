@@ -124,6 +124,7 @@ app.post('/', function(req, res, next) {
       return;
     }
     context.results = "Updated " + result.changedRows + " rows.";
+    console.log(context.results);
     res.render('home',context);
   });
   }
