@@ -14,7 +14,6 @@ app.set('port', 3000);
 
 app.get('/',function(req,res,next){
   var context = {};
-  console.log(req.query.id);
   if(req.query.id != null) {
     console.log("fuck");
     mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
@@ -37,6 +36,22 @@ app.get('/',function(req,res,next){
       res.render('home', context);
     });
   }
+});
+
+app.get('/edit-data',function(req,res,next){
+  var context = {};
+  console.log(req.query.id);
+  console.log("fuck");
+  mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    console.log("this assignment");
+    console.log(rows);
+    res.render('edit-data', context);
+  });
 });
 
 app.post('/', function(req, res, next) {
