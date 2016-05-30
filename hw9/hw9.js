@@ -70,10 +70,8 @@ app.post('/', function(req, res, next) {
   }
 });
 
-app.post('/edit-data',function(req,res,next){
-  var context = {};
-  console.log(req.body);
-  res.render('edit', context);
+app.post('/edit-data',function(req,res){
+  res.render('edit');
 });
 
 app.get('/reset-table',function(req,res,next){
