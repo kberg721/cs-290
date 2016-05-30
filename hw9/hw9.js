@@ -105,7 +105,27 @@ app.post('/', function(req, res, next) {
   }
 
   if(req.body.btn == "Edit") {
-    console.log("MR MEEEEEESEEKS");
+    var context = {};
+    var name = req.body.name;
+    var reps = req.body.reps;
+    var weight = req.body.weight;
+    var date = req.body.date;
+    var unit = "";
+    if(req.body.unit == "lbs") {
+        unit = 1;
+    } else {
+        unit = 0;
+    }
+    mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, unit=? WHERE id=? ",
+    [name, reps, weight, date, unit, req.body.id],
+    function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "Updated " + result.changedRows + " rows.";
+    res.render('home',context);
+  });
   }
 
 
