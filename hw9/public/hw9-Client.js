@@ -67,7 +67,7 @@ function attachFormFunctions() {
 			return function() {
 				var req = new XMLHttpRequest();
 			    var payload = "?id=";
-			    payload += editItem.parentElement.id.value;
+			    payload += item.parentElement.id.value;
 			    console.log(payload);
 			    req.open('GET', 'http://52.37.58.94:3000/' + payload, true);
 				req.send(null);
