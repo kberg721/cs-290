@@ -20,7 +20,7 @@ app.get('/',function(req,res,next){
       return;
     }
     context.results = rows;
-    res.render('edit-data', context);
+    res.render('home', context);
   });
 });
 
@@ -70,7 +70,8 @@ app.post('/', function(req, res, next) {
   }
 });
 
-app.post('/edit-data',function(req,res){
+app.get('/edit-data',function(req,res){
+  console.log("I'M MR MEESEEKS LOOK AT ME");
   res.render('edit-data');
 });
 
