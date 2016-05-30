@@ -20,7 +20,7 @@ app.get('/',function(req,res,next){
       return;
     }
     context.results = rows;
-    res.render('home', context);
+    res.render('edit-data', context);
   });
 });
 
