@@ -16,6 +16,7 @@ app.get('/',function(req,res,next){
   var context = {};
   console.log(req.query.id);
   if(req.query.id != null) {
+    console.log("fuck");
     mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
       if(err){
         next(err);
