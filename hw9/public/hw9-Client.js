@@ -39,7 +39,6 @@ function attachFormFunctions() {
 	var editBtns = document.getElementsByClassName("editBtn");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
-		var editItem = editBtns[i];
 		listItem.onclick = (function(item) {
 			return function() {
 				var req = new XMLHttpRequest();
@@ -61,7 +60,9 @@ function attachFormFunctions() {
 			    event.preventDefault();
 			};
 		})(listItem);
-
+	}
+	for(var j = 0; j < editBtns.length; j++) {
+		var editItem = editBtns[j];
 		editItem.onclick = (function(item) {
 			return function() {
 				var req = new XMLHttpRequest();
