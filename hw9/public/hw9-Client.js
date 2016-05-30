@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', setUpPage);
 
 function setUpPage() {
 	
-	attachDeleteFunction();
+	attachFormFunctions();
 
 	document.getElementById('newWorkoutBtn').addEventListener('click', function(event){
 	    var req = new XMLHttpRequest();
@@ -23,7 +23,7 @@ function setUpPage() {
 		    if(req.status >= 200 && req.status < 400){
 		      var response = JSON.parse(req.responseText);
 		      populateTable(response);
-		      attachDeleteFunction();
+		      attachFormFunctions();
 		    } else {
 		      console.log("Error in network request: " + req.statusText);
 		    }
@@ -34,10 +34,12 @@ function setUpPage() {
 	
 }
 
-function attachDeleteFunction() {
+function attachFormFunctions() {
 	var deleteBtns = document.getElementsByClassName("deleteBtn");
+	var editBtns = document.getElementsByClassName("editBtn");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
+		var editItem = editBtns[i];
 		listItem.onclick = (function(item) {
 			return function() {
 				var req = new XMLHttpRequest();
@@ -49,9 +51,8 @@ function attachDeleteFunction() {
 			    req.addEventListener('load',function(){
 				    if(req.status >= 200 && req.status < 400){
 				      var response = JSON.parse(req.responseText);
-				      console.log(response);
 				      populateTable(response);
-				      attachDeleteFunction();
+				      attachFormFunctions();
 				    } else {
 				      console.log("Error in network request: " + req.statusText);
 				    }
@@ -60,6 +61,28 @@ function attachDeleteFunction() {
 			    event.preventDefault();
 			};
 		})(listItem);
+
+		editItem.onclick = (function(item) {
+			return function() {
+				var req = new XMLHttpRequest();
+			    var payload = {};
+			    payload.id = item.parentElement.id.value;
+			    req.open('GET', 'http://52.37.58.94:3000/edit-data', true);
+			    req.setRequestHeader('Content-Type', 'application/json');
+			    req.addEventListener('load',function(){
+				    if(req.status >= 200 && req.status < 400){
+				      var response = JSON.parse(req.responseText);
+				      console.log("hi");
+				      //populateTable(response);
+				      //attachFormFunctions();
+				    } else {
+				      console.log("Error in network request: " + req.statusText);
+				    }
+				});
+				req.send(JSON.stringify(payload));
+			    event.preventDefault();
+			};
+		})(editItem);
 	}
 }
 
@@ -118,6 +141,7 @@ function populateTable(resp) {
 		input1.name = "id";
 		input1.value = resp[i].id;
 		var input2 = document.createElement("input");
+		input2.className = "editBtn";
 		input2.type = "submit";
 		input2.name = "edit";
 		input2.value = "edit";
