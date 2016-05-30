@@ -46,6 +46,10 @@ app.get('/edit-data',function(req,res,next){
     } 
     context.date = dateString;
     console.log(dateString);
+
+    if(rows[0].lbs == 1) {
+      context.checked = "true";
+    }
     res.render('edit-data', context);
   });
 });
