@@ -32,7 +32,6 @@ app.get('/edit-data',function(req,res,next){
       return;
     }
     context.results = rows;
-    console.log(context.results.name);
     res.render('edit-data', context);
   });
 });
