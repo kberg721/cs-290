@@ -14,6 +14,7 @@ app.set('port', 3000);
 
 app.get('/',function(req,res,next){
   var context = {};
+  console.log(req.query);
   mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
     if(err){
       next(err);
@@ -68,11 +69,6 @@ app.post('/', function(req, res, next) {
       });
     });
   }
-});
-
-app.get('/edit-data',function(req,res){
-  console.log("I'M MR MEESEEKS LOOK AT ME");
-  res.render('edit-data');
 });
 
 app.get('/reset-table',function(req,res,next){
