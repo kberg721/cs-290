@@ -61,6 +61,7 @@ function attachFormFunctions() {
 			};
 		})(listItem);
 	}
+	/*
 	for(var j = 0; j < editBtns.length; j++) {
 		var editItem = editBtns[j];
 		editItem.onclick = (function(item) {
@@ -75,6 +76,7 @@ function attachFormFunctions() {
 			};
 		})(editItem);
 	}
+	*/
 }
 
 function populateTable(resp) {
