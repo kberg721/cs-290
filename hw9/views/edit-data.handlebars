@@ -3,7 +3,7 @@
 <form id="newWorkout">
 	<fieldset style="margin-bottom: 15px">
 	{{#each this.results}}
-		<input type="hidden" name="id" value="{{this.id}}">
+		<input id="workoutID" type="hidden" name="id" value="{{this.id}}">
 
 		<label for="workoutName">Name: </label>
 		<input value="{{this.name}}" type="text" name="name" id="workoutName">
