@@ -71,7 +71,7 @@ function attachFormFunctions() {
 			    req.setRequestHeader('Content-Type', 'application/json');
 			    req.addEventListener('load',function(){
 				    if(req.status >= 200 && req.status < 400){
-				      var response = JSON.parse(req.responseText);
+				      //var response = JSON.parse(req.responseText);
 				      console.log("hi");
 				      //populateTable(response);
 				      //attachFormFunctions();
