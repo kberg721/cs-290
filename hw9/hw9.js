@@ -72,7 +72,7 @@ app.post('/', function(req, res, next) {
 
 app.post('/edit-data',function(req,res,next){
   var context = {};
-  console.log("hello from the server!");
+  console.log(req.body);
   res.render('edit', context);
 });
 
