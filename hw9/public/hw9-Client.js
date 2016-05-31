@@ -53,8 +53,7 @@ function setUpPage() {
 		    req.setRequestHeader('Content-Type', 'application/json');
 		    req.addEventListener('load',function(){
 			    if(req.status >= 200 && req.status < 400){
-			    	console.log("WHY");
-			       window.location.replace("http://stackoverflow.com");
+			       window.location.replace("http://52.37.58.94:3000/");
 			    } else {
 			      console.log("Error in network request: " + req.statusText);
 			    }
