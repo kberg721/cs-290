@@ -1,12 +1,21 @@
+/*
+	Kyle Bergman
+	CS290
+	Databases Assignment
+	Client-side JS
+*/
 document.addEventListener('DOMContentLoaded', setUpPage);
 
 function setUpPage() {
 	
 	attachFormFunctions();
 
+	//attach function so that we may add a workout to the database
 	if(document.getElementById('newWorkoutBtn') != null) {
 		document.getElementById('newWorkoutBtn').addEventListener('click', function(event){
 		    var req = new XMLHttpRequest();
+
+		    //create object to send to server
 		    var payload = {};
 		    payload.btn = "Add";
 		    payload.name = document.getElementById('workoutName').value;
@@ -18,9 +27,12 @@ function setUpPage() {
 		    } else {
 		    	payload.unit = "kgs";
 		    }
+
+		    //make the request
 		    req.open('POST', 'http://52.37.58.94:3000/', true);
 		    req.setRequestHeader('Content-Type', 'application/json');
 		    req.addEventListener('load',function(){
+		    	//if successful, populate the page with exercises and reattach functions
 			    if(req.status >= 200 && req.status < 400){
 			      var response = JSON.parse(req.responseText);
 			      populateTable(response);
@@ -29,14 +41,19 @@ function setUpPage() {
 			      console.log("Error in network request: " + req.statusText);
 			    }
 			});
+
+			//send the payload to the server
 			req.send(JSON.stringify(payload));
 		    event.preventDefault();
 		});
 	}
 
+	//enable the edit button if we are on the /edit-data page
 	if(document.getElementById('editWorkoutBtn') != null) {
 		document.getElementById('editWorkoutBtn').addEventListener('click', function(event){
 		    var req = new XMLHttpRequest();
+
+		    //create payloa object to send to server
 		    var payload = {};
 		    payload.btn = "Edit";
 		    payload.id = document.getElementById('workoutID').value;
@@ -49,27 +66,33 @@ function setUpPage() {
 		    } else {
 		    	payload.unit = "kgs";
 		    }
+
+		    //make request
 		    req.open('POST', 'http://52.37.58.94:3000/', true);
 		    req.setRequestHeader('Content-Type', 'application/json');
 		    req.addEventListener('load',function(){
+		    	//if successful, redirect to homepage
 			    if(req.status >= 200 && req.status < 400){
 			       window.location.replace("http://52.37.58.94:3000/");
 			    } else {
 			      console.log("Error in network request: " + req.statusText);
 			    }
 			});
+
+			//send payload object
 			req.send(JSON.stringify(payload));
 		    event.preventDefault();
 		});
 	}
-	
 }
 
+//attaches functions to all of the delete buttons
 function attachFormFunctions() {
 	var deleteBtns = document.getElementsByClassName("deleteBtn");
-	var editBtns = document.getElementsByClassName("editBtn");
 	for(var i = 0; i < deleteBtns.length; i++) {
 		var listItem = deleteBtns[i];
+
+		//returns a function so we can create a closure
 		listItem.onclick = (function(item) {
 			return function() {
 				var req = new XMLHttpRequest();
@@ -79,6 +102,7 @@ function attachFormFunctions() {
 			    req.open('POST', 'http://52.37.58.94:3000/', true);
 			    req.setRequestHeader('Content-Type', 'application/json');
 			    req.addEventListener('load',function(){
+			    	//if successful, repopulate page
 				    if(req.status >= 200 && req.status < 400){
 				      var response = JSON.parse(req.responseText);
 				      populateTable(response);
@@ -94,12 +118,17 @@ function attachFormFunctions() {
 	}
 }
 
+//dynamically populate page with table elements
 function populateTable(resp) {
+	//clear body
 	var body = document.getElementById("tableBody");
 	body.innerHTML = "";
+
+	//fill table with rows
 	for(var i = 0; i < resp.length; i++) {
 		var row = document.createElement("tr");
 
+		//add columns
 		var name = document.createElement("td");
 		name.innerHTML = resp[i].name;
 		row.appendChild(name);
@@ -126,6 +155,7 @@ function populateTable(resp) {
 		}
 		row.appendChild(lbs);
 
+		//add forms for delete and edit
 		var del = document.createElement("td");
 		var delForm = document.createElement("form");
 		var input1 = document.createElement("input");
@@ -161,6 +191,7 @@ function populateTable(resp) {
 		edit.appendChild(editForm);
 		row.appendChild(edit);
 
+		//attach the row to the table
 		body.appendChild(row);
 	}
 }
