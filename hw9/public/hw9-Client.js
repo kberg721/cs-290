@@ -51,17 +51,13 @@ function setUpPage() {
 		    }
 		    req.open('POST', 'http://52.37.58.94:3000/', true);
 		    req.setRequestHeader('Content-Type', 'application/json');
-		    /*
 		    req.addEventListener('load',function(){
 			    if(req.status >= 200 && req.status < 400){
-			      var response = JSON.parse(req.responseText);
-			      populateTable(response);
-			      attachFormFunctions();
+			       window.location.replace("http://stackoverflow.com");
 			    } else {
 			      console.log("Error in network request: " + req.statusText);
 			    }
 			});
-			*/
 			req.send(JSON.stringify(payload));
 		    event.preventDefault();
 		});
