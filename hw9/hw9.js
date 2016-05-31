@@ -52,6 +52,7 @@ app.get('/edit-data',function(req,res,next){
     } else {
       context.checked = false;
     }
+    console.log(context.checked);
     res.render('edit-data', context);
   });
 });
@@ -126,7 +127,6 @@ app.post('/', function(req, res, next) {
       next(err);
       return;
     }
-    context.results = "Updated " + result.changedRows + " rows.";
     res.redirect("http://52.37.58.94:3000/");
   });
   }
