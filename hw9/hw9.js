@@ -47,11 +47,8 @@ app.get('/edit-data',function(req,res,next){
     context.date = dateString;
 
     if(rows[0].lbs == 1) {
-      console.log(rows[0].lbs);
       context.checked = true;
-    } else {
-      context.checked = false;
-    }
+    } 
     console.log(context.checked);
     res.render('edit-data', context);
   });
