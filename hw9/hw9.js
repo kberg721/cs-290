@@ -42,6 +42,8 @@ app.get('/edit-data',function(req,res,next){
     context.results = rows;
     var date = new Date(rows[0].date);
     var dateString = date.getFullYear() + "-" 
+    console.log(date.getMonth());
+    console.log(date.getDay());
     if(date.getMonth() < 10) {
       dateString += "0" + date.getMonth() + "-";
     } else {
