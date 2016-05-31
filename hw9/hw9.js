@@ -70,6 +70,7 @@ function convertMonthNameToNumber(monthName) {
 app.post('/', function(req, res, next) {
   if(req.body.btn == "Add") {
     var name = req.body.name;
+    console.log(name);
     if(name.length > 0) {
       var reps = req.body.reps;
       var weight = req.body.weight;
