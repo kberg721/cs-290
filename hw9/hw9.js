@@ -45,14 +45,14 @@ app.get('/edit-data',function(req,res,next){
     console.log(date.getMonth());
     console.log(date.getDay());
     if(date.getMonth() < 10) {
-      dateString += "0" + date.getMonth() + "-";
+      dateString += "0" + (date.getMonth()+1) + "-";
     } else {
-      dateString += date.getMonth() + "-";
+      dateString += (date.getMonth()+1) + "-";
     } 
-    if(date.getDay() < 10) {
-      dateString += "0" + date.getDay();
+    if(date.getUTCDate() < 10) {
+      dateString += "0" + date.getUTCDate();
     } else {
-      dateString += date.getDay();
+      dateString += date.getUTCDate();
     } 
     context.date = dateString;
 
