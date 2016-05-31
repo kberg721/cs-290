@@ -1,3 +1,9 @@
+/*
+  Kyle Bergman
+  CS290
+  Databases Assignment
+  Server-side JS
+*/
 var express = require('express');
 var mysql = require('./dbcon.js');
 
@@ -12,6 +18,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
+//home page populate with database contents
 app.get('/',function(req,res,next){
   var context = {};
   mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
@@ -24,6 +31,7 @@ app.get('/',function(req,res,next){
   }); 
 });
 
+//edit page, prepopulate form with previous data
 app.get('/edit-data',function(req,res,next){
   var context = {};
   mysql.pool.query('SELECT * FROM workouts WHERE id = ?',[req.query.id], function(err, rows, fields){
@@ -71,12 +79,14 @@ app.post('/', function(req, res, next) {
     } else {
         unit = 0;
     }
+    //insert new value into table
     mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
       [name, reps, weight, date, unit], function(err, rows, fields){
       if(err){
         next(err); 
         return;
       }
+      //retrieve updated database rows
       mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
         if(err) {
           next(err);
@@ -88,12 +98,14 @@ app.post('/', function(req, res, next) {
   }
 
   if(req.body.btn == "Delete") {
+    //delete row from table
     mysql.pool.query("DELETE FROM workouts WHERE id = ?", 
       [req.body.id], function(err, rows, fields) {
       if(err) {
         next(err); 
         return;
       }
+      //retrieve updated table
       mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
         if(err) {
           next(err);
@@ -116,6 +128,7 @@ app.post('/', function(req, res, next) {
     } else {
         unit = 0;
     }
+    //update row in table
     mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=? ",
     [name, reps, weight, date, unit, req.body.id],
     function(err, result){
