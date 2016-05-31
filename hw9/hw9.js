@@ -123,7 +123,7 @@ app.post('/', function(req, res, next) {
       next(err);
       return;
     }
-    res.redirect(200, 'http://52.37.58.94:3000/');
+     res.status(200).send(JSON.stringify(rows));
   });
   }
 
