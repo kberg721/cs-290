@@ -123,7 +123,7 @@ app.post('/', function(req, res, next) {
       next(err);
       return;
     }
-     res.status(200).send(JSON.stringify(rows));
+     res.status(200).send(null);
   });
   }
 
