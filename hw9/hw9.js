@@ -49,7 +49,6 @@ app.get('/edit-data',function(req,res,next){
     if(rows[0].lbs == 1) {
       context.checked = true;
     } 
-    console.log(context.checked);
     res.render('edit-data', context);
   });
 });
@@ -124,7 +123,7 @@ app.post('/', function(req, res, next) {
       next(err);
       return;
     }
-    res.redirect("http://52.37.58.94:3000/");
+    res.redirect(200, 'http://52.37.58.94:3000/');
   });
   }
 
