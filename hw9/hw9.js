@@ -70,31 +70,33 @@ function convertMonthNameToNumber(monthName) {
 app.post('/', function(req, res, next) {
   if(req.body.btn == "Add") {
     var name = req.body.name;
-    var reps = req.body.reps;
-    var weight = req.body.weight;
-    var date = req.body.date;
-    var unit = "";
-    if(req.body.unit == "lbs") {
-        unit = 1;
-    } else {
-        unit = 0;
-    }
-    //insert new value into table
-    mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
-      [name, reps, weight, date, unit], function(err, rows, fields){
-      if(err){
-        next(err); 
-        return;
+    if(name.length > 0) {
+      var reps = req.body.reps;
+      var weight = req.body.weight;
+      var date = req.body.date;
+      var unit = "";
+      if(req.body.unit == "lbs") {
+          unit = 1;
+      } else {
+          unit = 0;
       }
-      //retrieve updated database rows
-      mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-        if(err) {
-          next(err);
+      //insert new value into table
+      mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
+        [name, reps, weight, date, unit], function(err, rows, fields){
+        if(err){
+          next(err); 
           return;
         }
-        res.status(200).send(JSON.stringify(rows));
+        //retrieve updated database rows
+        mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+          if(err) {
+            next(err);
+            return;
+          }
+          res.status(200).send(JSON.stringify(rows));
+        });
       });
-    });
+    }
   }
 
   if(req.body.btn == "Delete") {
